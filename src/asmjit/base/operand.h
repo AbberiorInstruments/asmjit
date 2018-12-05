@@ -13,6 +13,7 @@
 
 // [Api-Begin]
 #include "../asmjit_apibegin.h"
+#include <limits>
 
 namespace asmjit {
 
@@ -1497,7 +1498,7 @@ template<typename T> struct TypeIdOf<T*> {
 template<typename T>
 struct TypeIdOfInt {
   enum {
-    kSigned = int(~T(0) < T(0)),
+    kSigned = int(std::numeric_limits<T>::is_signed ? 1 : 0),
     kTypeId = (sizeof(T) == 1) ? (int)(kSigned ? TypeId::kI8  : TypeId::kU8 ) :
               (sizeof(T) == 2) ? (int)(kSigned ? TypeId::kI16 : TypeId::kU16) :
               (sizeof(T) == 4) ? (int)(kSigned ? TypeId::kI32 : TypeId::kU32) :
