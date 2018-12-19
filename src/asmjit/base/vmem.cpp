@@ -1075,3 +1075,6 @@ UNIT(base_vmem) {
 #endif // ASMJIT_TEST
 
 } // asmjit namespace
+
+#include "../asmjit_apiend.h"
+
